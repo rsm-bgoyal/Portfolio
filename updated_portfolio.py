@@ -547,7 +547,7 @@ st.markdown(
 # Header with profile photo
 try:
     profile_img_base64 = get_image_base64(
-        "/home/jovyan/git/Projects/Portfolio/profile_photo.png"
+        "profile_photo.png"
     )
     header_html = f"""
     <div class="main-header">
