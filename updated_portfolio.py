@@ -292,6 +292,253 @@ st.markdown(
         object-fit: contain;
     }
 
+    /* ========================================
+       MOBILE RESPONSIVE DESIGN
+       ======================================== */
+    
+    /* Tablets and smaller laptops */
+    @media (max-width: 1024px) {
+        .header-row {
+            gap: 3rem;
+            padding: 0 2rem;
+        }
+
+        .main-header h1 {
+            font-size: 2.8rem;
+        }
+
+        .profile-photo {
+            width: 130px;
+            height: 130px;
+        }
+    }
+
+    /* Mobile devices (landscape and portrait) */
+    @media (max-width: 768px) {
+        /* Header adjustments */
+        .main-header {
+            padding: 1.5rem 1rem;
+        }
+
+        .header-row {
+            flex-direction: column-reverse;
+            gap: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        .header-text {
+            text-align: center;
+        }
+
+        .main-header h1 {
+            font-size: 2.2rem;
+        }
+
+        .main-header h2 {
+            font-size: 1.2rem;
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item {
+            font-size: 0.75rem;
+            padding: 0.4rem 0.8rem;
+        }
+
+        /* Section headers */
+        .section-header {
+            font-size: 1.6rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        /* Project and experience cards */
+        .project-card,
+        .experience-card {
+            padding: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+        }
+
+        .company-name {
+            font-size: 1.05rem;
+        }
+
+        .role-title {
+            font-size: 1rem;
+        }
+
+        .project-date {
+            font-size: 0.8rem;
+        }
+
+        .project-description,
+        .project-description ul li {
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .skill-tag {
+            font-size: 0.7rem;
+            padding: 0.25rem 0.65rem;
+            margin: 0.15rem;
+        }
+
+        /* Skills grid - single column on mobile */
+        .skills-container {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .skill-category {
+            padding: 1.2rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1rem;
+        }
+
+        /* Sidebar adjustments */
+        [data-testid="stSidebar"] h3 {
+            font-size: 1.15rem;
+        }
+
+        [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {
+            font-size: 1rem;
+        }
+
+        [data-testid="stSidebar"] [data-testid="stRadio"] label {
+            font-size: 1rem;
+            padding: 0.6rem 0;
+        }
+
+        /* Buttons */
+        .stButton>button {
+            padding: 0.45rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Dashboard images on mobile */
+        .dashboard-image {
+            max-height: 300px;
+        }
+    }
+
+    /* Small phones (portrait) */
+    @media (max-width: 480px) {
+        .main-header {
+            padding: 1rem 0.5rem;
+        }
+
+        .main-header h1 {
+            font-size: 1.8rem;
+        }
+
+        .main-header h2 {
+            font-size: 1rem;
+        }
+
+        .profile-photo {
+            width: 100px;
+            height: 100px;
+        }
+
+        .contact-item {
+            font-size: 0.7rem;
+            padding: 0.35rem 0.65rem;
+        }
+
+        .section-header {
+            font-size: 1.4rem;
+        }
+
+        .project-card,
+        .experience-card {
+            padding: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.05rem;
+        }
+
+        .company-name {
+            font-size: 1rem;
+        }
+
+        .role-title {
+            font-size: 0.95rem;
+        }
+
+        .project-description,
+        .project-description ul li {
+            font-size: 0.88rem;
+        }
+
+        .skill-tag {
+            font-size: 0.65rem;
+            padding: 0.2rem 0.55rem;
+            margin: 0.1rem;
+        }
+
+        .skill-category {
+            padding: 1rem;
+        }
+
+        .skill-category h3 {
+            font-size: 0.95rem;
+        }
+
+        .dashboard-image {
+            max-height: 250px;
+        }
+    }
+
+    /* Extra small phones */
+    @media (max-width: 360px) {
+        .main-header h1 {
+            font-size: 1.5rem;
+        }
+
+        .main-header h2 {
+            font-size: 0.9rem;
+        }
+
+        .profile-photo {
+            width: 90px;
+            height: 90px;
+        }
+
+        .contact-item {
+            font-size: 0.65rem;
+            padding: 0.3rem 0.5rem;
+        }
+
+        .section-header {
+            font-size: 1.2rem;
+        }
+
+        .project-title {
+            font-size: 1rem;
+        }
+
+        .project-description,
+        .project-description ul li {
+            font-size: 0.82rem;
+        }
+    }
+
     </style>
 """,
     unsafe_allow_html=True,
@@ -300,7 +547,7 @@ st.markdown(
 # Header with profile photo
 try:
     profile_img_base64 = get_image_base64(
-        "profile_photo.png"
+        "/home/jovyan/git/Projects/Portfolio/profile_photo.png"
     )
     header_html = f"""
     <div class="main-header">
