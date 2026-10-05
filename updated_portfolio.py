@@ -598,9 +598,9 @@ with st.sidebar:
     st.markdown("### Quick Stats")
     col1, col2 = st.columns(2)
     with col1:
-        st.metric("Projects", "12+")
+        st.metric("Projects", "13")
     with col2:
-        st.metric("Skills", "25+")
+        st.metric("Skills", "80+")
 
     st.markdown("---")
     st.markdown("### Connect")
@@ -624,11 +624,12 @@ if page == "About":
                 I'm a <span style="color: #22d3ee; font-weight: 600;">Data Scientist and Analytics Engineer</span>
                 pursuing my Master's in Business Analytics at UC San Diego's Rady School of Management.
                 With a strong foundation in AI, machine learning, and data engineering, I specialize in building
-                end-to-end analytics solutions that drive business insights.
+                end-to-end analytics solutions that drive business insights, from sales forecasting for a medical
+                device company to LLM-powered retention systems.
             </p>
             <p style="color: #c5cbd3; font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
-                My expertise spans from <span style="color: #a78bfa; font-weight: 600;">deep learning and NLP</span>
-                to <span style="color: #a78bfa; font-weight: 600;">data warehousing and interactive dashboard development</span>.
+                My expertise spans <span style="color: #a78bfa; font-weight: 600;">time-series forecasting, generative AI, and experimentation</span>
+                as well as <span style="color: #a78bfa; font-weight: 600;">deep learning, NLP, and data engineering</span>.
                 I'm passionate about transforming complex data into actionable insights and building AI-powered solutions
                 that solve real-world problems.
             </p>
@@ -649,11 +650,12 @@ if page == "About":
                 Core Expertise
             </h3>
             <ul style="color: #c5cbd3; list-style: none; padding: 0;">
+                <li style="margin-bottom: 0.5rem;">• Time-Series Forecasting (XGBoost)</li>
+                <li style="margin-bottom: 0.5rem;">• Generative AI (LLMs, RAG, MCP)</li>
+                <li style="margin-bottom: 0.5rem;">• A/B Testing & Causal Inference</li>
                 <li style="margin-bottom: 0.5rem;">• Machine Learning & Deep Learning</li>
                 <li style="margin-bottom: 0.5rem;">• NLP & Sentiment Analysis</li>
-                <li style="margin-bottom: 0.5rem;">• Data Warehousing (Snowflake)</li>
-                <li style="margin-bottom: 0.5rem;">• Interactive Dashboards</li>
-                <li style="margin-bottom: 0.5rem;">• ETL Pipeline Development</li>
+                <li style="margin-bottom: 0.5rem;">• Data Warehousing & ETL (Snowflake)</li>
                 <li style="margin-bottom: 0.5rem;">• Computer Vision & CNNs</li>
             </ul>
         </div>
@@ -663,6 +665,38 @@ if page == "About":
 
     st.markdown(
         '<div class="section-header">Professional Experience</div>',
+        unsafe_allow_html=True,
+    )
+
+    # iRhythm capstone
+    st.markdown(
+        """
+    <div class="experience-card">
+        <div class="company-name">iRhythm Technologies, San Francisco</div>
+        <div class="role-title">Data Science Consultant (MSBA Capstone)</div>
+        <div class="project-date">April 2026 - June 2026</div>
+        <div class="project-description">
+            <ul style="color: #c5cbd3; line-height: 1.8;">
+                <li>Built an XGBoost model forecasting daily cardiac-monitor registrations across 118 sales
+                    territories (370K+ records) using 29 lag, calendar, weather, and Salesforce pipeline features.</li>
+                <li>Cut national monthly forecast error from 30% (the client's manual Excel method) to under 1% MAPE
+                    on a walk-forward holdout, matching Q1 2026 actuals within 0.6%.</li>
+                <li>Ensembled two independent models with quantile-regression confidence intervals and SHAP
+                    explanations to give regional sales leaders forecasts with honest uncertainty ranges.</li>
+                <li>Ran a pre-registered hypothesis test showing weather, the sales team's main explanation for
+                    Q1 dips, had a statistically significant but negligible effect (Cohen's d = 0.02).</li>
+            </ul>
+        </div>
+        <div>
+            <span class="skill-tag">XGBoost</span>
+            <span class="skill-tag">Time-Series Forecasting</span>
+            <span class="skill-tag">Quantile Regression</span>
+            <span class="skill-tag">SHAP</span>
+            <span class="skill-tag">Hypothesis Testing</span>
+            <span class="skill-tag">Python</span>
+        </div>
+    </div>
+    """,
         unsafe_allow_html=True,
     )
 
@@ -732,18 +766,40 @@ elif page == "Projects":
     with col2:
         filter_skill = st.selectbox(
             "Filter by skill",
-            ["All", "Python", "Deep Learning", "NLP", "Tableau", "Streamlit", "SQL"],
+            ["All", "Python", "Generative AI", "Machine Learning", "Deep Learning", "NLP", "Tableau", "Streamlit", "SQL"],
         )
 
     projects = [
         {
+            "title": "AI Customer Retention Pipeline for Spotify (Generative AI)",
+            "date": "Apr 2026 - Jun 2026",
+            "org": "UC San Diego",
+            "description": "Built an end-to-end AI coworker system that identifies at-risk Spotify subscribers, audits causal evidence, selects interventions, and routes each campaign through five human approval gates before sending. A 12-step pipeline scores 50K simulated subscribers with Random Forest (AUC 0.78), SHAP, and k-means segmentation, then uses an LLM causal audit (Claude) to separate true churn drivers from merely correlated signals. An expected-value gate and randomized holdout test showed treatment churn of 5.2% vs. 6.5% in control (p = 0.04), with Monte Carlo simulation projecting ~$112K ARR uplift over a mass-email baseline. Delivered as a role-based React/Python app with RAG over 21 policy documents, MCP tools, and a DeepEval test suite (10/10 passing), cutting estimated campaign prep time by 87%.",
+            "skills": [
+                "Generative AI",
+                "Python",
+                "Machine Learning",
+                "LLMs",
+                "RAG",
+                "MCP",
+                "Random Forest",
+                "SHAP",
+                "Causal Inference",
+                "A/B Testing",
+                "React.js",
+            ],
+            "links": [],
+            "images": [],
+        },
+        {
             "title": "Twitter Sentiment & Equity Market Intelligence",
             "date": "Sep 2025 - Dec 2025",
             "org": "UC San Diego",
-            "description": "Built an end-to-end analytics pipeline integrating Twitter data with equity market data for 25 U.S. stocks. Implemented NLP sentiment analysis in Python using RoBERTa and VADER, engineered financial indicators (Volume Z-Score, Strength Rank, Rolling Volatility), and delivered three interactive Tableau dashboards. Findings show sentiment–return correlation strengthens on high-volume trading days, positioning sentiment as a confirmation signal in market analysis.",
+            "description": "Built an end-to-end analytics pipeline integrating Twitter data with equity market data for 25 U.S. stocks. Analyzed 500,000+ tweets, implementing NLP sentiment analysis in Python using RoBERTa and VADER, engineered financial indicators (Volume Z-Score, Strength Rank, Rolling Volatility), and delivered three interactive Tableau dashboards. Findings show sentiment–return correlation is 40% stronger on high-volume trading days, positioning sentiment as a confirmation signal in market analysis.",
             "skills": [
                 "Python",
                 "NLP",
+                "Machine Learning",
                 "RoBERTa",
                 "VADER",
                 "Tableau",
@@ -803,7 +859,7 @@ elif page == "Projects":
             "title": "Snowflake Data Warehouse and ETL Integration",
             "date": "Aug 2025",
             "org": "UC San Diego",
-            "description": "Developed a Snowflake data warehouse integrating purchase, supplier, invoice, and weather datasets through automated Python and SQL ETL pipelines. Built materialized views and optimized queries, improving data processing efficiency and enabling analysis of purchase order discrepancies and external factors.",
+            "description": "Developed a Snowflake data warehouse integrating 1M+ purchase, supplier, invoice, and weather records through automated Python and SQL ETL pipelines. Built materialized views and optimized 25+ queries, improving performance by 70% and enabling analysis of $500K+ in purchase order discrepancies.",
             "skills": [
                 "Snowflake",
                 "Python",
@@ -854,11 +910,12 @@ elif page == "Projects":
             "title": "Gender and Age Image Classification using Neural Networks",
             "date": "Sep 2022 - Dec 2022",
             "org": "Nanyang Technological University",
-            "description": "Designed and implemented a Convolutional Neural Network (CNN) for gender and age classification from facial images. Conducted comparative analysis of the proposed CNN model against multiple baseline architectures to assess accuracy and computational efficiency.",
+            "description": "Designed and implemented a Convolutional Neural Network (CNN) for gender and age classification on 20,000+ facial images, reaching 92% gender and 85% age accuracy. Outperformed 8 baseline architectures with 15% better accuracy and 30% faster computation.",
             "skills": [
                 "TensorFlow",
                 "Keras",
                 "Deep Learning",
+                "Machine Learning",
                 "Python",
                 "CNN",
                 "Image Classification",
@@ -1043,15 +1100,28 @@ elif page == "Skills":
             "SQL",
         ],
         "Machine Learning & AI": [
+            "XGBoost",
             "TensorFlow",
             "Keras",
             "PyTorch",
             "scikit-learn",
+            "SHAP",
+            "Time-Series Forecasting",
+            "Quantile Regression",
+            "Clustering (k-means)",
+            "Computer Vision",
             "Deep Learning",
             "CNNs",
             "Reinforcement Learning",
             "Artificial Neural Networks",
             "Predictive Analytics",
+        ],
+        "Generative AI": [
+            "LLMs (Claude)",
+            "Retrieval-Augmented Generation (RAG)",
+            "Model Context Protocol (MCP)",
+            "DeepEval (LLM Testing)",
+            "Human-in-the-Loop Workflows",
         ],
         "NLP & Text Analysis": [
             "NLP",
@@ -1063,7 +1133,12 @@ elif page == "Skills":
             "Text Mining",
         ],
         "Data Engineering & Tools": [
+            "Pandas",
+            "NumPy",
+            "Polars",
+            "PySpark",
             "Snowflake",
+            "Data Warehousing",
             "ETL Pipelines",
             "Git",
             "React.js",
@@ -1087,13 +1162,15 @@ elif page == "Skills":
             "Query Writing",
             "DBMS",
         ],
-        "Data Analysis & Statistics": [
-            "Data Analysis",
-            "Statistical Data Analysis",
-            "Time Series Analysis",
-            "Correlation Analysis",
-            "Feature Engineering",
+        "Statistics & Experimentation": [
             "A/B Testing",
+            "Randomized Controlled Trials",
+            "Hypothesis Testing",
+            "Causal Inference",
+            "Monte Carlo Simulation",
+            "Walk-Forward Validation",
+            "Time Series Analysis",
+            "Feature Engineering",
         ],
         "Development & Design": [
             "Mobile App Development",
@@ -1151,12 +1228,12 @@ elif page == "Education":
         """
     <div class="experience-card">
         <div class="company-name">University of California, San Diego</div>
-        <div class="role-title">Master of Science in Business Analytics</div>
+        <div class="role-title">Master of Science in Business Analytics (Honors)</div>
         <div class="project-date">Rady School of Management • Expected December 2026</div>
         <div class="project-description">
             <p style="color: #c5cbd3;">
-                Advanced coursework in data science, machine learning, business intelligence, and analytics.
-                Focus on applying cutting-edge analytical techniques to solve complex business problems.
+                Advanced coursework in data science, machine learning, generative AI, experimentation, and analytics.
+                Capstone consulting engagement with iRhythm Technologies building a registrations forecasting system.
             </p>
         </div>
         <div>
@@ -1236,7 +1313,7 @@ st.markdown(
     <div style="text-align: center; color: #9ca3af; padding: 2rem;
                 border-top: 1px solid #2d3748; margin-top: 3rem;">
         <p style="font-family: 'JetBrains Mono', monospace;">
-            Built with Streamlit • © 2025 Bhavya Goyal
+            Built with Streamlit • © 2026 Bhavya Goyal
         </p>
         <p style="margin-top: 0.5rem;">
             <a href="https://www.linkedin.com/in/bhavya-goyal-429568308/" target="_blank"
